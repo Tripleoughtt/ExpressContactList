@@ -13,4 +13,4 @@ app.use('/', require('./routes/index.js'));
 app.use('/contacts', require('./routes/contacts.js'));
 //app.use('/delete', require('./routes/contacts.js'))
 
-app.listen(3000)
+app.listen(process.env.PORT || 5000)
