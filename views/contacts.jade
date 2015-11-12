@@ -1,0 +1,79 @@
+doctype html
+html(lang="en")
+  head
+    link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css", media="all")
+    link(rel="stylesheet",
+    href="bower_components/font-awesome/css/font-awesome.min.css", media="all") 
+    link(rel="stylesheet", href="stylesheets/style.css", media="all")
+    meta(charset="UTF-8")
+    title Contacts Page!
+  body
+    .container
+      .row
+         h1 Welcome to the contacts page!
+         h2 Here you will be able to store and edit contact information!
+         h2 to make an addition to the page simply type in the contact info
+         h2 then click the Add Contact button!
+      .row
+        input(id="name", type="text",   placeholder="Name" name="")
+        input(id="number", type="tel", placeholder="xxx-xxx-xxxx" name="")
+        input(id="email", type="email", placeholder="Sample@gmail.com" name="")
+        input(id="address", type="text" placeholder="Address" name="")
+        button.btn.btn-md#submit Submit Contact!
+      .row
+        table.table.table-striped
+          thead
+            tr
+              td Name
+              td Number
+              td E-Mail
+              td Address
+              td Delete
+              td Edit
+          tbody.append
+            each contact in contacts
+              tr
+                td.name= contact.name
+                td.number= contact.number
+                td.email= contact.email
+                td.address= contact.address
+                td.delete: i.fa.fa-trash.fa-lg
+                td.edit: a(href='#', data-target='#myModal', data-toggle='modal')
+                  i.fa.fa-pencil
+          tr.template
+            td.name
+            td.number
+            td.email
+            td.address
+            td.delete: i.fa.fa-trash.fa-lg
+            td.edit: a(href='#', data-target='#myModal', data-toggle='modal')
+              i.fa.fa-pencil-square-o.fa-lg
+    #myModal.modal.fade(role='dialog')
+      .modal-dialog.modal-lg
+        // Modal content
+        .modal-content
+          .modal-header
+            h2 Edit Contact!
+          .modal-body
+            h2 New Name!
+            input.newName(type='text', placeholder='Name')
+            br
+            h2 New Phone!
+            input.newPhone(type='tel', placeholder='Phone')
+            br
+            h2 New Email!
+            input.newEmail(type='email', placeholder='Email')
+            br
+            h2 New Address!
+            input.newAddress(type='text', placeholder='Address')
+            br
+            br
+            p.msg(align='center')
+            br
+            button.btn.btn-primary.btn-lg.center-block.submit(type='button', data-dismiss='modal') Save
+            br
+            br
+
+    script(src="bower_components/jquery/dist/jquery.min.js")
+    script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(src="js/contactAppend.js" type="text/javascript")
